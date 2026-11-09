@@ -6,7 +6,7 @@ Vagrant.configure("2") do |config|
   # Servidor DNS
   config.vm.define "dns" do |dns|
 
-    dns.vm.hostname = "dns.ftp-vagrant-ansible.test"
+    dns.vm.hostname = "dns.jose.test"
 
     dns.vm.network "private_network",
       ip: "192.168.57.5"
@@ -16,7 +16,7 @@ Vagrant.configure("2") do |config|
   # Servidor web y FTP
   config.vm.define "negocio" do |negocio|
 
-    negocio.vm.hostname = "negocio.ftp-vagrant-ansible.test"
+    negocio.vm.hostname = "negocio.jose.test"
 
     negocio.vm.network "private_network",
       ip: "192.168.57.7"
@@ -26,7 +26,7 @@ Vagrant.configure("2") do |config|
   # Nodo de control Ansible
   config.vm.define "ansible" do |ansible|
 
-    ansible.vm.hostname = "ansible.ftp-vagrant-ansible.test"
+    ansible.vm.hostname = "ansible.jose.test"
 
     ansible.vm.network "private_network",
       ip: "192.168.57.6"
