@@ -1,0 +1,19 @@
+
+$TTL 86400
+
+@   IN  SOA dns.jose.test. admin.jose.test. (
+        2026111601
+        3600
+        1800
+        604800
+        86400
+)
+
+@       IN  NS      dns.jose.test.
+
+dns     IN  A       192.168.57.5
+ansible IN  A       192.168.57.6
+negocio IN  A       192.168.57.7
+
+www     IN  CNAME   negocio.jose.test.
+ftp     IN  CNAME   negocio.jose.test.

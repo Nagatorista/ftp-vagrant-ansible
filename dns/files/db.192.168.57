@@ -1,0 +1,16 @@
+
+$TTL 86400
+
+@   IN  SOA dns.jose.test. admin.jose.test. (
+        2026111601
+        3600
+        1800
+        604800
+        86400
+)
+
+@   IN  NS  dns.jose.test.
+
+5   IN  PTR dns.jose.test.
+6   IN  PTR ansible.jose.test.
+7   IN  PTR negocio.jose.test.
