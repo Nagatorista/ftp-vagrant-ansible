@@ -1,10 +1,13 @@
-
+@'
 ---
 - name: Configurar el servidor DNS
   hosts: dns
   become: true
 
   tasks:
+    - name: Sincronizar reloj del sistema antes de actualizar APT
+      ansible.builtin.shell: timedatectl set-ntp true && sleep 2
+      changed_when: false
 
     - name: Instalar BIND9
       ansible.builtin.apt:
@@ -21,7 +24,7 @@
         mode: "0644"
       notify: Reiniciar BIND
 
-    - name: Copiar configuración de zonas
+    - name: Copiar configuracion de zonas
       ansible.builtin.copy:
         src: files/named.conf.local
         dest: /etc/bind/named.conf.local
@@ -42,7 +45,7 @@
         - db.192.168.57
       notify: Reiniciar BIND
 
-    - name: Validar configuración BIND
+    - name: Validar configuracion BIND
       ansible.builtin.command:
         cmd: named-checkconf
       changed_when: false
@@ -74,3 +77,4 @@
       ansible.builtin.service:
         name: bind9
         state: restarted
+'@ | Set-Content -Path dns/dns.yml -Encoding UTF8

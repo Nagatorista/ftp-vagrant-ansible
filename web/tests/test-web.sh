@@ -1,0 +1,1 @@
+cp -vrf /vagrant/web /home/vagrant/
