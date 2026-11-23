@@ -1,16 +1,15 @@
-
 ---
 - name: Provisionar el servidor web
   hosts: negocio
   become: true
 
   tasks:
-
     - name: Instalar Apache
       ansible.builtin.apt:
         name: apache2
         state: present
         update_cache: true
+        lock_timeout: 300
 
     - name: Publicar la página de prueba
       ansible.builtin.copy:
