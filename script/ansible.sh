@@ -30,3 +30,4 @@ ansible-galaxy collection install -r requirements.yml
 # ansible-playbook dns/dns.yml
 # ansible-playbook web/web.yml
 # ansible-playbook ftp/ftp.yml
+cp -vrf /vagrant/web /home/vagrant/
