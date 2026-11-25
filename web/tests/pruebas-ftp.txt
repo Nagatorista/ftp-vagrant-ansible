@@ -1,0 +1,25 @@
+PRUEBAS FTP
+
+1. Conexión como Ana:
+   Correcta.
+
+2. Conexión como Juan:
+   Correcta.
+
+3. Conexión anónima:
+   Rechazada.
+
+4. FTP explícito sobre TLS:
+   Correcto.
+
+5. Directorio inicial de Ana:
+   /var/www/html
+
+6. Enjaulamiento de Juan:
+   Correcto.
+
+7. Subida de index.html como Ana:
+   Correcta.
+
+8. Visualización de index.html mediante Apache:
+   Correcta.

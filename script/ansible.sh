@@ -1,33 +1,31 @@
 #!/usr/bin/env bash
 
-# Configura el servidor como nodo de control de Ansible
-
 set -xeu
 
-# Actualizar los repositorios
+# Actualizar Debian
 apt-get update
 
-# Instalar Ansible y Ansible Lint
-apt-get install -y ansible ansible-lint
+# Instalar herramientas
+apt-get install -y ansible ansible-lint whois
 
-# Directorio de trabajo de Ansible
+# Directorio de trabajo
 mkdir -p /home/vagrant
-
 cd /home/vagrant
 
-# Copiar la configuración
+# Copiar configuración general
 cp -vf /vagrant/ansible.cfg .
 cp -vf /vagrant/inventory.yml .
 cp -vf /vagrant/requirements.yml .
-cp -vrf /vagrant/dns .
-# cp -vrf /vagrant/web .
-# cp -vrf /vagrant/ftp .
-# chown vagrant:vagrant ./ftp/vars/vault.yml
 
-# Instalar las dependencias
+# Copiar playbooks
+cp -vrf /vagrant/dns .
+cp -vrf /vagrant/web .
+cp -vrf /vagrant/ftp .
+
+# Ajustar propietario de archivos
+chown -R vagrant:vagrant /home/vagrant/dns
+chown -R vagrant:vagrant /home/vagrant/web
+chown -R vagrant:vagrant /home/vagrant/ftp
+
+# Instalar colecciones
 ansible-galaxy collection install -r requirements.yml
-# Provisionar con Ansible
-# ansible-playbook dns/dns.yml
-# ansible-playbook web/web.yml
-# ansible-playbook ftp/ftp.yml
-cp -vrf /vagrant/web /home/vagrant/
